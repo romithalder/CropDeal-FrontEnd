@@ -1,0 +1,14 @@
+.full-width{
+    width: 100%;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: black;
+  }
+
+  input.ng-invalid.ng-touched{
+    border: red 1px;
+  }
+  small{
+    color: rgb(193, 72, 72);
+  }

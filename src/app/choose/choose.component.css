@@ -1,0 +1,17 @@
+
+.text-center{
+    text-align: center;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 20px 10px 30px 0;
+  }
+  
+  img.avatar {
+    width: 15%;
+    border-radius: 20%;
+  }
+  .container {
+    padding: 16px;
+  }

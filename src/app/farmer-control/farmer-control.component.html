@@ -1,0 +1,83 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> 
+    <a class="navbar-brand" style="color:white;">Farmer Control</a> 
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> 
+    <span class="navbar-toggler-icon"></span> 
+    </button> 
+    <div class="collapse navbar-collapse" id="navbarColor02"> 
+       <ul class="navbar-nav mr-auto"> 
+          <li class="nav-item active"> 
+           
+          </li> 
+       </ul> 
+       <form class="form-inline my-2 my-lg-0"> 
+       </form> 
+    </div> 
+  </nav> 
+  <div class="container" id="main-container"> 
+  <div class="row"> 
+    <div *ngFor="let farmer of farmers" class="col-md-6 col-xl-3"> 
+       <div class="card m-b-30"> 
+          <div class="card-body row"> 
+             <div class="col-6 card-title align-self-center mb-0"> 
+                <h5>{{farmer?.name}}</h5> 
+                <p class="m-0">Email : {{farmer?.email}}</p> 
+             </div> 
+          </div> 
+          <ul class="list-group list-group-flush"> 
+             <li class="list-group-item"><i class="fa fa-envelope float-right"></i>address : {{farmer?.address}}</li> 
+             <li class="list-group-item"><i class="fa fa-phone float-right"></i>mobile : {{farmer?.mobile}}</li> 
+          </ul> 
+          <div class="card-body"> 
+             <div class="float-right btn-group btn-group-sm"> 
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                (click)="edit(farmer.id,farmer)" >Edit</button>
+                <button type="button" class="btn btn-danger" (click)="deleteFarmer(farmer.id)">Delete</button>
+             </div> 
+          </div> 
+       </div> 
+    </div> 
+  </div> 
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Update farmer</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #updateForm="ngForm" (ngSubmit)="updateFarmer()">
+            <div class="form-group">
+              <label for="Id">Id :</label>
+              <input type="text" #id [(ngModel)]="farmerToUpdate.id" name="id" id="id" class="form-control" placeholder="Crop id">
+            </div>
+            <div class="form-group">
+              <label for="name">name :</label>
+              <input type="text" #name [(ngModel)]="farmerToUpdate.name" name="name" id="name" class="form-control" placeholder="name">
+            </div>
+            <div class="form-group">
+              <label for="email">email :</label>
+              <input type="text" #email [(ngModel)]="farmerToUpdate.email" name="email" id="email" class="form-control"
+                placeholder="email">
+            </div>
+            <div class="form-group">
+              <label for="address">address :</label>
+              <input type="text" #address [(ngModel)]="farmerToUpdate.address" name="address" id="address" class="form-control"
+                placeholder="address">
+            </div>
+            <div class="form-group">
+                <label for="mobile">mobile :</label>
+                <input type="text" #mobile [(ngModel)]="farmerToUpdate.mobile" name="mobile" id="mobile" class="form-control"
+                  placeholder="mobile">
+              </div>
+            <div class="form-group">
+              <input type="submit" value="Update" class="btn btn-primary w-100">
+            </div>
+          </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  

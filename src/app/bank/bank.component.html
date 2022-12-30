@@ -1,0 +1,87 @@
+<mat-toolbar color="">
+    <h2>Please Enter Your Bank Details so that the dealer can Pay you</h2>
+    <span></span>
+    <span class="space"></span>
+    
+    <a mat-raised-button color="primary" routerLink="/bank">Bank Details</a>
+    
+  </mat-toolbar>
+<div class="container">
+    <div class="card mt-5" style="align-items: center;">
+      <h1>Add Bank Details</h1>
+    </div>
+  
+    <div class="card mt-5" style="padding: 20px;">
+      <form #registerForm="ngForm" (ngSubmit)="addbank(registerForm)">
+        <div class="form-group">
+          <label for="bankname">Bank Name :</label>
+          <input type="text" #bankname (ngModel)="bankname" name="bankname" id="bankname" class="form-control" placeholder="bankname">
+        </div>
+        <div class="form-group">
+          <label for="accountNo">Account No :</label>
+          <input type="text" #accountNo (ngModel)="accountNo" name="accountNo" id="accountNo" class="form-control"
+            placeholder="Account No.">
+        </div>
+        <div class="form-group">
+          <label for="accountHolderName">Account Holder Name :</label>
+          <input type="text" #accountHolderName (ngModel)="accountHolderName" name="accountHolderName" id="accountHolderName" class="form-control"
+            placeholder="accountHolderName">
+        </div>
+        <div class="form-group">
+            <label for="ifscCode">IFSC Code :</label>
+            <input type="text" #ifscCode (ngModel)="ifscCode" name="ifscCode" id="ifscCode" class="form-control"
+              placeholder="ifscCode">
+          </div>
+          <div class="form-group">
+            <label for="debitCardNo">Debit Card No Code :</label>
+            <input type="text" #debitCardNo (ngModel)="debitCardNo" name="debitCardNo" id="debitCardNo" class="form-control"
+              placeholder="debitCardNo">
+          </div>
+          <div class="form-group">
+            <label for="cvv">cvv :</label>
+            <input type="password" #cvv (ngModel)="cvv" name="cvv" id="cvv" class="form-control"
+              placeholder="cvv">
+          </div>
+          <div class="form-group">
+            <label for="expiry">Expiry Date:</label>
+            <input type="date" #expiry (ngModel)="expiry" name="expiry" id="expiry" class="form-control"
+              placeholder="expiry">
+          </div>
+        <div class="form-group">
+          <input type="submit" value="Add Bank" class="btn btn-primary w-100">
+        </div>
+      </form>
+    </div>
+
+    <div class="mt-5">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Bank Name</th>
+              <th>Account No</th>
+              <th>Account Holder Name</th>
+              <th>IFSC</th>
+              <th>Debit Card No</th>
+              <th>CVV</th>
+              <th>expiry Date</th>
+              
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr *ngFor="let bank of banks">
+              <td>{{bank.bankname}}</td>
+              <td>{{bank.accountNo}}</td>
+              <td>{{bank.accountHolderName}}</td>
+              <td>{{bank.ifscCode}}</td>
+              <td>{{bank.debitCardNo}}</td>
+              <td>{{bank.cvv}}</td>
+              <td>{{bank.expiry}}</td>
+              
+              
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    

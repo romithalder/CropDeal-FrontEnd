@@ -1,0 +1,94 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img class="img-fluid" style="width: 100px" src="/assets/booklogo.jpg" alt="">
+                </div>
+                <h1 class="text-center">Register here !!</h1>
+                  <form style="color: blueviolet" #registerForm="ngForm" (ngSubmit)="register(registerForm)" >
+                    AdharId
+                    <mat-form-field appearance="outline" class="full-width" >
+                        <mat-label>Adhar Id</mat-label>
+                        <input type="text"  matInput #id (ngModel)="id" name="id" id="id"  placeholder="id" #Id="ngModel" required>
+                    </mat-form-field>
+                    <small *ngIf="Id.invalid && Id.touched">Adhar Id is mandatory</small>
+                    <br>
+                    <br>
+                    Full Name
+                        <mat-form-field appearance="outline" class="full-width" >
+                            <mat-label>Full Name</mat-label>
+                            <input type="text" matInput #name (ngModel)="name" name="name" id="name"  placeholder="Full-name" #Name="ngModel" required>
+                        </mat-form-field>
+                        <small *ngIf="Name.invalid && Name.touched">Full Name is mandatory</small>
+                        <br>
+                        <br>
+                        email
+                        <mat-form-field appearance="outline" class="full-width" >
+                            <mat-label>email</mat-label>
+                            <input type="text" matInput #email (ngModel)="email" name="email" id="email" #Email="ngModel" required>
+                        </mat-form-field>
+                        <small *ngIf="Email.invalid && Email.touched">Valid email is mandatory</small>
+                        <br>
+                        <br>
+                        address
+                        <mat-form-field appearance="outline" class="full-width" >
+                            <mat-label>address</mat-label>
+                            <input type="text" matInput #address (ngModel)="address" name="address" id="address" #Address="ngModel" required>
+                        </mat-form-field>
+                        <small *ngIf="Address.invalid && Address.touched">Adddress is mandatory</small>
+                        <br>
+                        <br>
+                        mobile                     
+                        <mat-form-field appearance="outline" class="full-width" >
+                            <mat-label>mobile</mat-label>
+                            <input type="text"  matInput #mobile (ngModel)="mobile" [(ngModel)]="mob" name="mobile" id="mobile" #Mobile="ngModel" required minlength=10>
+                        </mat-form-field>
+                        <small *ngIf="Mobile.invalid && Mobile.touched && mobBool">Mobile number is mandatory</small>
+                        
+                        <small *ngIf="Mobile.errors?.['minlength']">
+                            Mobile Number should be minimum of 10 digits
+                        </small>
+                        <br>
+                        <br>
+                        Password
+                        <mat-form-field appearance="outline" class="full-width" >
+                            <mat-label>Password</mat-label>
+                            <input type="password" [(ngModel)]="Password" matInput #password (ngModel)="password" name="password" id="password" #Pass="ngModel" required>
+                           
+                        </mat-form-field>
+                        <small *ngIf="Pass.invalid && Pass.touched">Give a Password</small>
+                        <br>
+                        <br>
+
+                        Confirm Password
+                        <mat-form-field appearance="outline" class="full-width" >
+                            <mat-label>Password</mat-label>
+                            <input type="password" [(ngModel)]="CPassword" matInput  name="Cpassword" id="Cpassword" >
+                           
+                        </mat-form-field>
+                        <small>{{msg}}</small>
+                       
+                        
+                            
+
+                       
+                       <table>
+                           <tr> <td><div class="container full-width">
+                            <!--<input  type="submit" value="Register" mat-raised-button color="primary" [disabled]="!registerForm.valid">-->
+                            <input type="submit" value="Register" class="btn btn-primary w-100"  [disabled]="!(registerForm.valid)">
+                        </div></td>
+
+                        <td><div class="container full-width">
+                            <button type="reset" mat-raised-button color="accent">reset</button>
+                        </div></td></tr>
+                       </table>
+
+                   
+                       
+                  </form>
+            </div>
+
+        </div>
+    </div>
+</div>

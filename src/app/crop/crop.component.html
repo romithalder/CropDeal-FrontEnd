@@ -1,0 +1,101 @@
+<mat-toolbar color="">
+  <h2>JAI JAWAN, JAI KISAN </h2>
+  <span></span>
+  <span class="space"></span>
+  <!--for making the most of the navbar premises-->
+  <a mat-raised-button color="primary" routerLink="/bank">Bank Details</a>
+  
+</mat-toolbar>
+<div class="container">
+    <div class="card mt-5" style="align-items: center;">
+      <h1>Add Crop Details</h1>
+    </div>
+  
+    <div class="card mt-5" style="padding: 20px;">
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        <div class="form-group">
+          <label for="name">Type :</label>
+          <input type="text" #type (ngModel)="type" name="type" id="type" class="form-control" placeholder="Crop Type" required #Type="ngModel">
+        </div>
+        <small *ngIf="Type.invalid && Type.touched"> Type of the Crop is required</small>
+        <div class="form-group">
+          <label for="address">Quantity :</label>
+          <input type="text" #quantity (ngModel)="quantity" name="quantity" id="quantity" class="form-control"
+            placeholder="Crop Quantity">
+        </div>
+        <div class="form-group">
+          <label for="percentage">address & contact :</label>
+          <input type="text" #address (ngModel)="address" name="address" id="address" class="form-control" placeholder="address" required #Address="ngModel">
+        </div>
+        <small *ngIf="Address.invalid && Address.touched"> Address and  any mode of Contact is required</small>
+        <div class="form-group">
+          <input type="submit" value="Register" class="btn btn-primary w-100" [disabled]="!registerForm.valid" >
+        </div>
+      </form>
+    </div>
+
+    <div class="mt-5">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Serial no.</th>
+              <th>type</th>
+              <th>Quantity</th>
+              <th>Address & contact</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody class="tbody">
+            <tr *ngFor="let crop of CropDetails">
+              <td>{{crop.id}}</td>
+              <td>{{crop.type}}</td>
+              <td>{{crop.quantity}}</td>
+              <td>{{crop.address}}</td>
+              <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                (click)="edit(crop.id,crop)" >Edit</button></td>
+              <td><button type="button" class="btn btn-danger" (click)="deleteCrop(crop.id)">Delete</button></td>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Crop</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #updateForm="ngForm" (ngSubmit)="updateCrop()">
+          <div class="form-group">
+            <label for="Id">Id :</label>
+            <input type="text" #id [(ngModel)]="CropToUpdate.id" name="id" id="id" class="form-control" placeholder="Crop id">
+          </div>
+          <div class="form-group">
+            <label for="name">Type :</label>
+            <input type="text" #type [(ngModel)]="CropToUpdate.type" name="type" id="type" class="form-control" placeholder="Crop Type">
+          </div>
+          <div class="form-group">
+            <label for="address">Quantity :</label>
+            <input type="text" #quantity [(ngModel)]="CropToUpdate.quantity" name="quantity" id="quantity" class="form-control"
+              placeholder="Crop Quantity">
+          </div>
+          <div class="form-group">
+            <label for="percentage">address :</label>
+            <input type="text" #address [(ngModel)]="CropToUpdate.address" name="address" id="address" class="form-control"
+              placeholder="address">
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-primary w-100">
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
